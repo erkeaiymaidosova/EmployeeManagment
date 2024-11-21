@@ -13,7 +13,6 @@ public class PartTimeEmployee extends Employee{
     }
 
     private int hourlyRate;
-
     public PartTimeEmployee(String name, String type, double salary, int workedHour, int hourlyRate) {
         super(name, type, salary);
         this.workedHour = workedHour;
