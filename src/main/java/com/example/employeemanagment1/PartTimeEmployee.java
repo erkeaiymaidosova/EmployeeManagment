@@ -5,10 +5,11 @@ public class PartTimeEmployee extends Employee {
     private int hoursWorked;
 
     public PartTimeEmployee(String name, double hourlyRate, int hoursWorked) {
-        super(name, "Part-time", 0);
+        super(name, "Part Time", 0.0);
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
     }
+
 
     public double getHourlyRate() {
         return hourlyRate;

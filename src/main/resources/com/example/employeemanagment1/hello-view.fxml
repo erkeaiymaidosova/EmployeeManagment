@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="697.0" prefWidth="490.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="com.example.employeemanagment1.HelloController">
+<VBox alignment="CENTER" prefHeight="697.0" prefWidth="490.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.employeemanagment1.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -34,15 +34,20 @@
                   <Label prefHeight="39.0" prefWidth="151.0" style="-fx-background-color: #6a8595;" text="                 Salary" textFill="WHITE" GridPane.columnIndex="2" />
                </children>
             </GridPane>
-            <ListView fx:id="list" layoutX="-1.0" layoutY="33.0" prefHeight="418.0" prefWidth="450.0" />
-            <ComboBox fx:id="select" layoutX="267.0" layoutY="461.0" prefHeight="26.0" prefWidth="167.0" promptText="Select type of employee" />
-            <Label layoutX="22.0" layoutY="461.0" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" text="   Name:" textFill="WHITE" />
-            <TextField fx:id="name" layoutX="107.0" layoutY="461.0" prefHeight="26.0" prefWidth="152.0" />
-            <Label fx:id="hourL" layoutX="22.0" layoutY="499.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" textFill="WHITE" />
-            <TextField fx:id="hour" layoutX="107.0" layoutY="502.0" prefHeight="26.0" prefWidth="152.0" />
-            <Label fx:id="rateL" layoutX="22.0" layoutY="543.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" textFill="WHITE" />
-            <TextField fx:id="rate" layoutX="107.0" layoutY="546.0" prefHeight="26.0" prefWidth="152.0" />
-            <Button fx:id="add" layoutX="274.0" layoutY="503.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="32.0" prefWidth="152.0" style="-fx-background-color: #6a8595;" text="Add" textFill="WHITE" />
+            <ListView fx:id="list" layoutX="-1.0" layoutY="33.0" onMouseClicked="#onListClicked" prefHeight="371.0" prefWidth="450.0" />
+            <ComboBox fx:id="select" layoutX="268.0" layoutY="435.0" onMouseClicked="#updateDeviceFieldsVisibility" prefHeight="26.0" prefWidth="167.0" promptText="Select type of employee" />
+            <Label layoutX="22.0" layoutY="435.0" prefHeight="26.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" text="   Name:" textFill="WHITE" />
+            <TextField fx:id="name" layoutX="107.0" layoutY="435.0" prefHeight="26.0" prefWidth="152.0" />
+            <Label fx:id="hourL" layoutX="22.0" layoutY="474.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" textFill="WHITE" />
+            <TextField fx:id="hour" layoutX="107.0" layoutY="474.0" prefHeight="26.0" prefWidth="152.0" />
+            <Label fx:id="rateL" layoutX="22.0" layoutY="514.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" textFill="WHITE" />
+            <TextField fx:id="rate" layoutX="107.0" layoutY="517.0" prefHeight="26.0" prefWidth="152.0" />
+            <Button fx:id="add" layoutX="275.0" layoutY="474.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="10.0" prefWidth="152.0" style="-fx-background-color: #6a8595;" text="Add" textFill="WHITE" />
+            <Button fx:id="delete" layoutX="275.0" layoutY="517.0" mnemonicParsing="false" onAction="#onDelete" prefHeight="10.0" prefWidth="152.0" style="-fx-background-color: #6a8595;" text="Delete" textFill="WHITE" />
+            <Label fx:id="label" layoutX="279.0" layoutY="565.0" onDragDetected="#onDelete" onMouseClicked="#calculateSalary" onMouseReleased="#onListClicked" prefHeight="26.0" prefWidth="146.0" />
+            <Button fx:id="calculate" layoutX="276.0" layoutY="565.0" mnemonicParsing="false" onAction="#calculateSalary" prefHeight="10.0" prefWidth="152.0" style="-fx-background-color: #6a8595;" text="Calculate salary" textFill="WHITE" />
+            <Label fx:id="max" layoutX="22.0" layoutY="562.0" prefHeight="32.0" prefWidth="85.0" style="-fx-background-color: #6a8595;" textFill="WHITE" />
+            <TextField fx:id="maxHours" layoutX="107.0" layoutY="565.0" prefHeight="26.0" prefWidth="152.0" />
          </children>
       </Pane>
    </children>

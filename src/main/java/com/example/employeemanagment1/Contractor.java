@@ -2,14 +2,23 @@ package com.example.employeemanagment1;
 
 public class Contractor extends Employee {
     private double hourlyRate;
-    private int hoursWorked;
     private int maxHours;
 
-    public Contractor(String name, double hourlyRate, int hoursWorked, int maxHours) {
+    private int hoursWorked;
+
+    public Contractor(String name, double hourlyRate, int maxHours,int hoursWorked) {
         super(name, "Contractor", 0);
         this.hourlyRate = hourlyRate;
-        this.hoursWorked = hoursWorked;
         this.maxHours = maxHours;
+        this.hoursWorked=hoursWorked;
+    }
+
+    public int getWorkedHours() {
+        return hoursWorked;
+    }
+
+    public void setWorkedHours(int workedHours) {
+        this.hoursWorked = workedHours;
     }
 
     public double getHourlyRate() {
@@ -24,17 +33,8 @@ public class Contractor extends Employee {
         }
     }
 
-    public int getHoursWorked() {
-        return hoursWorked;
-    }
 
-    public void setHoursWorked(int hoursWorked) {
-        if (hoursWorked >= 0) {
-            this.hoursWorked = hoursWorked;
-        } else {
-            throw new IllegalArgumentException("Hours worked cannot be negative.");
-        }
-    }
+
 
     public int getMaxHours() {
         return maxHours;
