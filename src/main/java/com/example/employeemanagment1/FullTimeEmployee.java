@@ -1,12 +1,13 @@
 package com.example.employeemanagment1;
 
-public class FullTimeEmployee extends Employee{
-    public FullTimeEmployee(String name, String type, double salary) {
-        super(name, type, salary);
+public class FullTimeEmployee extends Employee {
+
+    public FullTimeEmployee(String name, double salary) {
+        super(name, "Full-time", salary);
     }
 
     @Override
     double calculateSalary() {
-        return 0;
+        return getSalary();
     }
 }

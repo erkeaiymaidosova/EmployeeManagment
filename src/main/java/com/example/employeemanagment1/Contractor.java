@@ -1,47 +1,58 @@
 package com.example.employeemanagment1;
 
-public class Contractor extends Employee{
-    private int workedHour;
+public class Contractor extends Employee {
+    private double hourlyRate;
+    private int hoursWorked;
+    private int maxHours;
 
-    @Override
-    public String toString() {
-        return "Contractor{" +
-                "workedHour=" + workedHour +
-                ", hourlyRate=" + hourlyRate +
-                '}';
-    }
-
-    private int hourlyRate;
-
-    public Contractor(String name, String type, double salary, int workedHour, int hourlyRate) {
-        super(name, type, salary);
-        this.workedHour = workedHour;
+    public Contractor(String name, double hourlyRate, int hoursWorked, int maxHours) {
+        super(name, "Contractor", 0);
         this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
+        this.maxHours = maxHours;
     }
 
-    public int getWorkedHour() {
-        return workedHour;
-    }
-
-    public void setWorkedHour(int workedHour) {
-        this.workedHour = workedHour;
-    }
-
-    public int getHourlyRate() {
+    public double getHourlyRate() {
         return hourlyRate;
     }
 
-    public void setHourlyRate(int hourlyRate) {
-        this.hourlyRate = hourlyRate;
+    public void setHourlyRate(double hourlyRate) {
+        if (hourlyRate > 0) {
+            this.hourlyRate = hourlyRate;
+        } else {
+            throw new IllegalArgumentException("Hourly rate must be positive.");
+        }
     }
 
+    public int getHoursWorked() {
+        return hoursWorked;
+    }
 
-    public Contractor(String name, String type, double salary) {
-        super(name, type, salary);
+    public void setHoursWorked(int hoursWorked) {
+        if (hoursWorked >= 0) {
+            this.hoursWorked = hoursWorked;
+        } else {
+            throw new IllegalArgumentException("Hours worked cannot be negative.");
+        }
+    }
+
+    public int getMaxHours() {
+        return maxHours;
+    }
+
+    public void setMaxHours(int maxHours) {
+        if (maxHours > 0) {
+            this.maxHours = maxHours;
+        } else {
+            throw new IllegalArgumentException("Max hours must be positive.");
+        }
     }
 
     @Override
     double calculateSalary() {
-        return 0;
+        int effectiveHours = Math.min(hoursWorked, maxHours);
+        double calculatedSalary = hourlyRate * effectiveHours;
+        setSalary(calculatedSalary);
+        return calculatedSalary;
     }
 }

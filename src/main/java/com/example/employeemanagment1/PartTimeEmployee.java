@@ -1,46 +1,43 @@
 package com.example.employeemanagment1;
 
-public class PartTimeEmployee extends Employee{
+public class PartTimeEmployee extends Employee {
+    private double hourlyRate;
+    private int hoursWorked;
 
-    private int workedHour;
-
-    @Override
-    public String toString() {
-        return "PartTimeEmployee{" +
-                "workedHour=" + workedHour +
-                ", hourlyRate=" + hourlyRate +
-                '}';
-    }
-
-    private int hourlyRate;
-    public PartTimeEmployee(String name, String type, double salary, int workedHour, int hourlyRate) {
-        super(name, type, salary);
-        this.workedHour = workedHour;
+    public PartTimeEmployee(String name, double hourlyRate, int hoursWorked) {
+        super(name, "Part-time", 0);
         this.hourlyRate = hourlyRate;
+        this.hoursWorked = hoursWorked;
     }
 
-    public int getWorkedHour() {
-        return workedHour;
-    }
-
-    public void setWorkedHour(int workedHour) {
-        this.workedHour = workedHour;
-    }
-
-    public int getHourlyRate() {
+    public double getHourlyRate() {
         return hourlyRate;
     }
 
-    public void setHourlyRate(int hourlyRate) {
-        this.hourlyRate = hourlyRate;
+    public void setHourlyRate(double hourlyRate) {
+        if (hourlyRate > 0) {
+            this.hourlyRate = hourlyRate;
+        } else {
+            throw new IllegalArgumentException("Hourly rate must be positive.");
+        }
     }
 
-    public PartTimeEmployee(String name, String type, double salary) {
-        super(name, type, salary);
+    public int getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(int hoursWorked) {
+        if (hoursWorked >= 0) {
+            this.hoursWorked = hoursWorked;
+        } else {
+            throw new IllegalArgumentException("Hours worked cannot be negative.");
+        }
     }
 
     @Override
     double calculateSalary() {
-        return 0;
+        double calculatedSalary = hourlyRate * hoursWorked;
+        setSalary(calculatedSalary);
+        return calculatedSalary;
     }
 }
